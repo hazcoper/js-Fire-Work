@@ -10,6 +10,7 @@ let force = 0;
 
 function setup() {
   createCanvas(600, 600);
+  background(0);
 }
 
 function sendRocket(x, y){
