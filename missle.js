@@ -3,13 +3,13 @@ class Missle{
     constructor(x, y, force){
 
         this.pos = createVector(x, y);
-        this.vel = createVector(random(-1,1), 4 + force/10);  //velocidade no eixo x e no eixo y
+        this.vel = createVector(random(-1,1), 5 + force/5);  //velocidade no eixo x e no eixo y
         this.force = force;
-        // this.vel
+
         // this.accel
-        // this.angle
+
         this.explodeStatus = -1; //-1 -> not exploding; 0 -> exploding; 1 -> exploded
-        this.life = round(50 + force/5);
+        this.life = round(random(40,60) + force/5);
         this.color = [210, 210, 210];
     }
 
@@ -27,7 +27,7 @@ class Missle{
 
     explode(){
         //create the particles and send them
-        this.Particle = new Particles(150+this.force/20, this.force);
+        this.Particle = new Particles(150+this.force/2, this.force);
         this.Particle.createParticles(this.pos.x, this.pos.y);
 
     }
@@ -37,7 +37,7 @@ class Missle{
         strokeWeight(0);
         if(this.explodeStatus == -1){
             fill(this.color[0], this.color[1], this.color[2], this.lifetime);
-            ellipse(this.pos.x, this.pos.y, 10);    
+            ellipse(this.pos.x, this.pos.y, random(6,8)+this.force/4, random(6,10)+this.force/2);    
             return 0;
         }
         if(this.explodeStatus == 0){

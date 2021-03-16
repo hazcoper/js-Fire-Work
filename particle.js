@@ -14,7 +14,8 @@ class Particle {
   constructor(x, y, force) {
     this.pos = createVector(x, y);
     this.vel = p5.Vector.random2D();
-    this.vel.mult(random(0.5, 2));
+    this.vel.mult(random(0.5, 2) + round(force/6));
+
     this.acc = createVector(0, 0);
     this.r = 2;
     this.lifetime = 255;
@@ -25,9 +26,9 @@ class Particle {
     // this.green = random(20, 40);
     // this.blue = random(0, 10);
     
-    this.red = random(100, 201);
-    this.green = random(20, 100);
-    this.blue = random(0, 50);
+    this.red = random(100, 201) + force/2;
+    this.green = random(20, 70);
+    this.blue = random(0, 80);
   }
 
 

@@ -9,7 +9,7 @@ let missiles = [];
 let force = 0;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(displayWidth+100, displayHeight+100);
   background(0);
 }
 
@@ -24,7 +24,7 @@ function mouseClicked(event) {
 }
 
 function draw() {
-  background(0 );
+  background(0, 30);
   
   for(let index = 0; index < missiles.length; index++){
     missiles[index].makeMove()
