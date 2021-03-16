@@ -11,7 +11,8 @@
 
 
 class Particle {
-  constructor(x, y, force) {
+
+  constructor(x, y, force, colorPallet) {
     this.pos = createVector(x, y);
     this.vel = p5.Vector.random2D();
     this.vel.mult(random(0.5, 2) + round(force/6));
@@ -20,15 +21,13 @@ class Particle {
     this.r = 2;
     this.lifetime = 255;
     this.force = force;
+    this.colorPallet = colorPallet;
     
     
     // this.red = random(190, 201);
     // this.green = random(20, 40);
     // this.blue = random(0, 10);
     
-    this.red = random(100, 201) + force/2;
-    this.green = random(20, 70);
-    this.blue = random(0, 80);
   }
 
 
@@ -69,7 +68,10 @@ class Particle {
 
     // stroke(this.red, this.green, this.blue, this.lifetime);
     strokeWeight(0);
-    fill(this.red, this.green, this.blue, this.lifetime);
+    //generate a color mutation 
+    this.colorPallet.getColor();
+    
+    fill(this.colorPallet.mutation[0], this.colorPallet.mutation[1], this.colorPallet.mutation[2], this.lifetime);
 
     ellipse(this.pos.x, this.pos.y, this.r * 2);
   }

@@ -7,14 +7,16 @@
 
 let missiles = [];
 let force = 0;
+let myColor;
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
   background(0);
+  myColor = new Colors(100);
 }
 
 function sendRocket(x, y){
-  missiles.push(new Missle(x,y, force ));
+  missiles.push(new Missle(x,y, force, myColor.getPallete()));
   force = 0;   // reset the force
 }
 

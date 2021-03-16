@@ -1,15 +1,16 @@
 class Particles{
 
-    constructor(quant, force){
+    constructor(quant, force, colorPallet){
         this.quant = quant + round(force/5);
         this.partList = [];
         this.force = force
+        this.colorPallet = colorPallet;
     }
 
 
     createParticles(x, y){
         for(let i = 0; i < this.quant; i++){
-            this.partList.push(new Particle(x ,y, this.force));
+            this.partList.push(new Particle(x ,y, this.force, this.colorPallet));
         }
     }
 
