@@ -8,22 +8,26 @@
 
 //basicamente quero fazer particulas para uma pequena explosao
 
+
+
 class Particle {
-  constructor(x, y) {
+  constructor(x, y, force) {
     this.pos = createVector(x, y);
     this.vel = p5.Vector.random2D();
     this.vel.mult(random(0.5, 2));
     this.acc = createVector(0, 0);
     this.r = 4;
     this.lifetime = 255;
+    this.force = force;
+    
     
     // this.red = random(190, 201);
     // this.green = random(20, 40);
     // this.blue = random(0, 10);
     
-    this.red = random(0, 201);
-    this.green = random(20, 200);
-    this.blue = random(0, 100);
+    this.red = random(100, 201);
+    this.green = random(20, 100);
+    this.blue = random(0, 50);
   }
 
 
@@ -56,7 +60,8 @@ class Particle {
     this.pos.add(this.vel);
     this.acc.set(0, 0);
 
-    this.lifetime -= 5;
+    this.lifetime -= round(5 + this.force/20);
+    
   }
 
   show() {
