@@ -16,7 +16,7 @@ class Particle {
     this.vel = p5.Vector.random2D();
     this.vel.mult(random(0.5, 2));
     this.acc = createVector(0, 0);
-    this.r = 4;
+    this.r = 2;
     this.lifetime = 255;
     this.force = force;
     
@@ -60,7 +60,7 @@ class Particle {
     this.pos.add(this.vel);
     this.acc.set(0, 0);
 
-    this.lifetime -= round(5 + this.force/20);
+    this.lifetime -= round(5 - this.force/7);
     
   }
 

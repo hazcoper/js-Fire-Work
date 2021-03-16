@@ -23,7 +23,7 @@ function mouseClicked(event) {
 }
 
 function draw() {
-  background(0);
+  background(0 ,2);
   
   for(let index = 0; index < missiles.length; index++){
     missiles[index].makeMove()
