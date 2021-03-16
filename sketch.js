@@ -30,7 +30,6 @@ function draw() {
     missiles[index].makeMove()
     if(missiles[index].show() == 1){
       missiles.splice(index, 1);
-      console.log("particle was delted");
     }
 
   }

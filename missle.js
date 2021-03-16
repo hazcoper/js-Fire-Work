@@ -27,7 +27,6 @@ class Missle{
 
     explode(){
         //create the particles and send them
-        console.log("Particle has exploded");
         this.Particle = new Particles(150+this.force/20, this.force);
         this.Particle.createParticles(this.pos.x, this.pos.y);
 
