@@ -9,7 +9,7 @@ let missiles = [];
 let force = 0;
 
 function setup() {
-  createCanvas(displayWidth+100, displayHeight+100);
+  createCanvas(displayWidth, displayHeight);
   background(0);
 }
 
