@@ -28,6 +28,7 @@ function sendRocket(x, y){
 function mouseClicked(event) {
   // console.log(event);
   sendRocket(mouseX, mouseY);
+  fullscreen(1);
 }
 
 function draw() {

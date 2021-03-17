@@ -19,7 +19,7 @@ class Missle{
     makeMove(){
         //update the position and life of
         //acceleration = change in velocity/time
-        if(this.life < 15){
+        if(this.life < 20){
             this.vel.y = this.vel.y - this.vel.y*this.accel;
         }else{
             this.vel.y = this.vel.y + this.vel.y*this.accel;
