@@ -9,9 +9,13 @@ let missiles = [];
 let force = 0;
 let myColor;
 
+//prevent certain moves on mobile
+document.ontouchmove = function(event) {
+  event.preventDefault();
+};
+
 function setup() {
-  // createCanvas(displayWidth, displayHeight);
-  createCanvas(1500, 1500);
+  createCanvas(displayWidth, displayHeight);
   background(0);
   myColor = new Colors(100);
 }
