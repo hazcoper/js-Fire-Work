@@ -10,7 +10,8 @@ class Missle{
         console.log(colorPallet.base[0]);
         this.explodeStatus = -1; //-1 -> not exploding; 0 -> exploding; 1 -> exploded
         this.life = round(random(40,60) + force/5);
-        this.color = [210, 210, 210];
+        //red green blue
+        this.color = [round(random(230, 255)), 150, 130];
         this.colorPallet = colorPallet;
 
         
@@ -30,7 +31,7 @@ class Missle{
 
     explode(){
         //create the particles and send them
-        this.Particle = new Particles(150+this.force/2, this.force, this.colorPallet);
+        this.Particle = new Particles(round(130+this.force/1.1), this.force, this.colorPallet);
         this.Particle.createParticles(this.pos.x, this.pos.y);
 
     }
