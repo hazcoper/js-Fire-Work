@@ -10,7 +10,8 @@ let force = 0;
 let myColor;
 
 function setup() {
-  createCanvas(displayWidth, displayHeight);
+  // createCanvas(displayWidth, displayHeight);
+  createCanvas(1500, 1500);
   background(0);
   myColor = new Colors(100);
 }

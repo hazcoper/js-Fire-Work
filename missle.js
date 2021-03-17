@@ -3,13 +3,12 @@ class Missle{
     constructor(x, y, force, colorPallet){
 
         this.pos = createVector(x, y);
-        this.vel = createVector(random(-1,1), 5 + force/5);  //velocidade no eixo x e no eixo y
+        this.vel = createVector(random(-1,1), 6 + force/5);  //velocidade no eixo x e no eixo y
         this.force = force;
 
-        // this.accel
-        console.log(colorPallet.base[0]);
+        this.accel = random(0.035);
         this.explodeStatus = -1; //-1 -> not exploding; 0 -> exploding; 1 -> exploded
-        this.life = round(random(40,60) + force/5);
+        this.life = round(random(40,55) + force/5);
         //red green blue
         this.color = [round(random(230, 255)), 150, 130];
         this.colorPallet = colorPallet;
@@ -19,6 +18,12 @@ class Missle{
 
     makeMove(){
         //update the position and life of
+        //acceleration = change in velocity/time
+        if(this.life < 15){
+            this.vel.y = this.vel.y - this.vel.y*this.accel;
+        }else{
+            this.vel.y = this.vel.y + this.vel.y*this.accel;
+        }
         this.pos.y = this.pos.y - this.vel.y;
         this.pos.x = this.pos.x - this.vel.x;
         this.life -= 1;
