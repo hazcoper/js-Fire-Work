@@ -9,6 +9,16 @@ let missiles = [];
 let force = 0;
 let myColor;
 
+document.addEventListener("visibilitychange", function() {
+  if (document.hidden){
+    for(let index = 0; index < missiles.length; index++){
+      missiles[index].stopSounds()  
+    }
+  } else {
+      console.log("Browser tab is visible")
+  }
+});
+
 //prevent certain moves on mobile
 document.ontouchmove = function(event) {
   event.preventDefault();

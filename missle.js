@@ -23,6 +23,11 @@ class Missle{
         
     }
 
+    stopSounds(){
+        this.sound.stopPulse();
+        this.explosionSound.stopPulse();
+    }
+
     makeMove(){
         //update the position and life of
         //acceleration = change in velocity/time
