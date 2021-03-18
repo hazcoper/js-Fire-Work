@@ -9,9 +9,16 @@ class Missle{
         this.accel = random(0.035);
         this.explodeStatus = -1; //-1 -> not exploding; 0 -> exploding; 1 -> exploded
         this.life = round(random(40,55) + force/5);
+        this.lifetime = 255;
         //red green blue
-        this.color = [round(random(230, 255)), 150, 130];
+        this.color = [round(random(210, 240)), random(140, 160), random(120, 150)];
+
+        // this.color = [round(random(210, 240)), 160, 140];
         this.colorPallet = colorPallet;
+        this.sound = new Sound(map(this.life, 0, 55, 0, 70),0);  
+        this.sound.startPulse();
+
+        this.explosionSound = new Sound(10, loadSound("explosion.mp3"));
 
         
     }
@@ -19,18 +26,26 @@ class Missle{
     makeMove(){
         //update the position and life of
         //acceleration = change in velocity/time
-        if(this.life < 20){
-            this.vel.y = this.vel.y - this.vel.y*this.accel;
-        }else{
-            this.vel.y = this.vel.y + this.vel.y*this.accel;
+        if(this.explodeStatus != 0){
+            if(this.life < 20){
+                this.vel.y = this.vel.y - this.vel.y*this.accel;
+            }else{
+                this.vel.y = this.vel.y + this.vel.y*this.accel;
+            }
+            this.pos.y = this.pos.y - this.vel.y;
+            this.pos.x = this.pos.x - this.vel.x;
+            this.life -= 1;
+            this.lifetime -= 5; 
+            this.sound.updateFreq();
         }
-        this.pos.y = this.pos.y - this.vel.y;
-        this.pos.x = this.pos.x - this.vel.x;
-        this.life -= 1;
+        
 
         if(this.life < 1 && this.explodeStatus == -1){
             this.explode();
             this.explodeStatus = 0;
+            this.sound.stopPulse();
+            this.explosionSound.startPulse();
+            console.log("Has expldoed");
         }
     }
 
@@ -45,8 +60,10 @@ class Missle{
         // stroke(this.color[0], this.color[1], this.color[2])
         strokeWeight(0);
         if(this.explodeStatus == -1){
-            fill(this.color[0], this.color[1], this.color[2], this.lifetime);
-            ellipse(this.pos.x, this.pos.y, random(6,8)+this.force/4, random(6,10)+this.force/2);    
+            fill(this.color[0], this.color[1], this.color[2], random(this.lifetime-5, this.lifetime+100));
+            // ellipse(this.pos.x, this.pos.y, random(6,8)+this.force/3, random(6,10)+this.force/2);    
+            ellipse(this.pos.x, this.pos.y, random(6,8)+this.force/4, random(8,15)+this.force/2);    
+
             return 0;
         }
         if(this.explodeStatus == 0){
